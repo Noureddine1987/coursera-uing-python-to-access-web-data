@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Nov 25 10:30:55 2018
+
+@author: Noureddine
+"""
+
+import urllib.request, urllib.parse, urllib.error
+import json
+
+url_json = input('Enter url :', )
+
+print('Retrienving', url_json)
+uh = urllib.request.urlopen(url_json)
+data = uh.read().decode()
+print('Retrieving', len(data), 'Caracterts')
+js = json.loads(data)
+print('User count:', len(js))
+
+# Total all of the counts
+total = 0
+for item in js["comments"]:
+    #print item["count"]
+    total += item["count"]
+
+print ('Sum: ', total)
